@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export function TaskInput({onAdd}) {
     const [text, setText] = useState('');
+    
     const handleAction = () => {
         if (text.trim().length >= 3) {
             onAdd(text)

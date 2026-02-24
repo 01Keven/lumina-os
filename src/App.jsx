@@ -12,8 +12,10 @@ import { TaskInput } from "./components/TaskInput";
 
 function App() {
 
+    // Array para armazenamento das tasks
     const [tasks, setTasks] = useState([])
     
+    // 
     function handleAddTasks(text) {
         const newTask = {
             id: Date.now(),
