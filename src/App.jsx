@@ -17,7 +17,7 @@ function App() {
     // Array para armazenamento das tasks
     const [tasks, setTasks] = useState([])
     
-    // 
+    // Esqueleto da Task
     function handleAddTasks(text) {
         const newTask = {
             id: Date.now(),
@@ -35,11 +35,20 @@ function App() {
         setTasks(tasks.filter(task => task.id !== id))
     }
 
+    function handleToggleTasks(id) {
+        setTasks(tasks.map( task => {
+            if (task.id == id) {
+                return {...task, done: !task.done};
+            }
+                return task;
+        } ))
+    }
+
     return (
         <div>
             <h1>Task Master Pro</h1>
 
-            <TaskInput onAdd={handleAddTasks}/>
+            <TaskInput onAdd={handleAddTasks} onToggle={handleToggleTasks}/>
 
             <ul>
                 {tasks.map( task => (
@@ -47,8 +56,9 @@ function App() {
                         key={task.id}
                         task={task}
                         onDelete={handleDeleteTasks}
-
+                        onToggle={handleToggleTasks} 
                     />
+                    
                 ))}
             </ul>
             
