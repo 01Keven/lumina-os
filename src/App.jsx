@@ -7,15 +7,28 @@
  *  
  **/
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TaskInput } from "./components/TaskInput";
 import { TaskItem } from "./components/TaskItem";
 
 
 function App() {
 
+    
     // Array para armazenamento das tasks
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(() => {
+        const saveData = localStorage.getItem("TASKS_V1");
+
+        if (saveData) {
+            return JSON.parse(saveData);
+        }
+
+        return [];
+    })
+    
+    useEffect(() => {
+        localStorage.setItem("TASKS_V1", JSON.stringify(tasks));
+    }, [tasks]); // so age quando muda tasks
     
     // Esqueleto da Task
     function handleAddTasks(text) {
@@ -24,25 +37,27 @@ function App() {
             text: text,
             done: false
         }
-
+        
         setTasks([
             ...tasks,
             newTask
         ])
     }
-
+    
     function handleDeleteTasks(id) {
         setTasks(tasks.filter(task => task.id !== id))
     }
-
+    
     function handleToggleTasks(id) {
         setTasks(tasks.map( task => {
             if (task.id == id) {
                 return {...task, done: !task.done};
             }
-                return task;
+            return task;
         } ))
     }
+    
+    
 
     return (
         <div>
