@@ -15,8 +15,10 @@ export function TaskInput({onAdd}) {
     return (
         <div>
             <input value={text}
-            onChange={e => setText(e.target.value)} />
-            <button onClick={handleAction}> Add
+                onChange={e => setText(e.target.value)} 
+            />
+            <button 
+                onClick={handleAction}> Add
             </button>
         </div>
     )

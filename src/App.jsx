@@ -9,6 +9,8 @@
 
 import { useState } from "react";
 import { TaskInput } from "./components/TaskInput";
+import { TaskItem } from "./components/TaskItem";
+
 
 function App() {
 
@@ -29,6 +31,10 @@ function App() {
         ])
     }
 
+    function handleDeleteTasks(id) {
+        setTasks(tasks.filter(task => task.id !== id))
+    }
+
     return (
         <div>
             <h1>Task Master Pro</h1>
@@ -36,10 +42,17 @@ function App() {
             <TaskInput onAdd={handleAddTasks}/>
 
             <ul>
-                {tasks.map(task => (
-                    <li key={task.id}>{task.text}</li>
+                {tasks.map( task => (
+                    <TaskItem 
+                        key={task.id}
+                        task={task}
+                        onDelete={handleDeleteTasks}
+
+                    />
                 ))}
             </ul>
+            
+            
         </div>
     )
 }
