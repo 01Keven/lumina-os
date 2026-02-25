@@ -14,7 +14,6 @@ import { TaskItem } from "./components/TaskItem";
 
 function App() {
 
-    
     // Array para armazenamento das tasks
     const [tasks, setTasks] = useState(() => {
         const saveData = localStorage.getItem("TASKS_V1");
@@ -25,6 +24,7 @@ function App() {
 
         return [];
     })
+
     
     useEffect(() => {
         localStorage.setItem("TASKS_V1", JSON.stringify(tasks));
@@ -35,7 +35,8 @@ function App() {
         const newTask = {
             id: Date.now(),
             text: text,
-            done: false
+            done: false,
+            
         }
         
         setTasks([
@@ -44,6 +45,14 @@ function App() {
         ])
     }
     
+    const [filter, setFilter] = useState(['all', 'done', 'todo'])
+    
+    const filteredTasks = tasks.filter(task => {
+        if (filter === 'todo') return !task.done;
+        if (filter === 'done') return task.done;
+        return true;
+    })
+
     function handleDeleteTasks(id) {
         setTasks(tasks.filter(task => task.id !== id))
     }
@@ -56,8 +65,6 @@ function App() {
             return task;
         } ))
     }
-    
-    
 
     return (
         <div>
@@ -65,8 +72,14 @@ function App() {
 
             <TaskInput onAdd={handleAddTasks} onToggle={handleToggleTasks}/>
 
+            <div>
+                <button onClick={() => setFilter('all')}>All</button>
+                <button onClick={() => setFilter('todo')}>Todo</button>
+                <button onClick={() => setFilter('done')}>Done</button>
+            </div>
+
             <ul>
-                {tasks.map( task => (
+                {filteredTasks.map( task => (
                     <TaskItem 
                         key={task.id}
                         task={task}
@@ -75,9 +88,8 @@ function App() {
                     />
                     
                 ))}
-            </ul>
-            
-            
+
+            </ul> 
         </div>
     )
 }

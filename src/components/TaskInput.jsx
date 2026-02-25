@@ -12,6 +12,7 @@ export function TaskInput({onAdd}) {
         }
     }
 
+
     return (
         <div>
             <input value={text}
