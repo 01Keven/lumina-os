@@ -52,6 +52,8 @@ function App() {
     const totalTasks = tasks.length;
 
     const completedTasks = tasks.filter( task => task.done).length;
+
+    const pendingTasks = totalTasks - completedTasks;
     
     const filteredTasks = tasks.filter(task => {
         if (filter === 'todo') return !task.done;
@@ -71,8 +73,6 @@ function App() {
             return task;
         } ))
     }
-
-
 
     return (
         <div>
@@ -103,6 +103,7 @@ function App() {
                 {<TaskStats 
                     onDone={completedTasks}
                     Total={totalTasks}
+                    onPending={pendingTasks}
                 />}
             </div>
         </div>
