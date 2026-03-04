@@ -14,8 +14,6 @@ import { TaskStats } from "./components/TaskStats";
 
 function App() {
     
-    
-
     const [filter, setFilter] = useState(['all'])
 
     // Array para armazenamento das tasks
@@ -40,7 +38,6 @@ function App() {
             id: Date.now(),
             text: text,
             done: false,
-            
         }
         
         setTasks([
@@ -74,6 +71,16 @@ function App() {
         } ))
     }
 
+    function handleEditTasks(id, newTask) {
+        setTasks(tasks.map( task => {
+            if (task.id == id) {
+                return {...task, text: newTask};
+            }
+            return task;
+        } ))
+    }
+    
+
     return (
         <div>
             <h1>Task Master Pro</h1>
@@ -93,6 +100,7 @@ function App() {
                         task={task}
                         onDelete={handleDeleteTasks}
                         onToggle={handleToggleTasks} 
+                        onEdit={handleEditTasks}
                     />
                     
                 ))}
