@@ -14,11 +14,12 @@ export function TaskInput({onAdd}) {
 
 
     return (
-        <div>
-            <input value={text}
+        <div className="flex gap-3">
+            <input value={text} className="input-field" placeholder="Ex: Clear the table"
                 onChange={e => setText(e.target.value)} 
             />
-            <button 
+            <button
+                className="btn-primary whitespace-nowrap"
                 onClick={handleAction}> Add
             </button>
         </div>

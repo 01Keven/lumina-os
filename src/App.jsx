@@ -82,52 +82,57 @@ function App() {
     
 
     return (
-        <div>
-            <h1>Task Master Pro</h1>
+        <div className="min-h-screen bg-deb-soft/10 p-container flex flex-col items-center">
+            <div className="card w-full max-w-4xl">
 
-            <TaskInput onAdd={handleAddTasks} onToggle={handleToggleTasks}/>
+                <h1 className="text-4xl font-bold text-deb-deep mb-8 text-center tracking-tight">Task Master Pro</h1>
 
-            <div>
-                <button onClick={() => setFilter('all')}>All</button>
-                <button onClick={() => setFilter('todo')}>Todo</button>
-                <button onClick={() => setFilter('done')}>Done</button>
-            </div>
+                <TaskInput onAdd={handleAddTasks} onToggle={handleToggleTasks}/>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                        
-                    </tr>
-
-                </thead>
-                <tbody>
-                    
-                    {filteredTasks.map( task => (
-                        <TaskItem 
-                            key={task.id}
-                            task={task}
-                            onDelete={handleDeleteTasks}
-                            onToggle={handleToggleTasks} 
-                             onEdit={handleEditTasks}
-                        />
+                <div className="flex gap-2 justify-center my-8">
+                    <button onClick={() => setFilter('all')}>All</button>
+                    <button onClick={() => setFilter('todo')}>Todo</button>
+                    <button onClick={() => setFilter('done')}>Done</button>
+                </div>
+                
+                <div className=" overflow-hidden rounded-button border border-deb-soft/30 shadow-sm">
+                    <table className="w-full text-left border-collapse">
+                        <thead className="bg-deb-deep text-white text-sm uppercase tracking-widest">
+                            <tr>
+                                <th className="p-4 font-semibold">Name</th>
+                                <th className="p-4 font-semibold">Status</th>
+                                <th className="p-4 font-semibold text-center">Actions</th>
                                 
-                    ))}
-                        
-                </tbody>
+                            </tr>
 
-            </table>
+                        </thead>
+                        <tbody className="divive-y divide-deb-soft/20">
+                            
+                            {filteredTasks.map( task => (
+                                <TaskItem 
+                                    key={task.id}
+                                    task={task}
+                                    onDelete={handleDeleteTasks}
+                                    onToggle={handleToggleTasks} 
+                                    onEdit={handleEditTasks}
+                                />
+                                        
+                            ))}
+                                
+                        </tbody>
 
-            <div>
-                {<TaskStats 
-                    onDone={completedTasks}
-                    Total={totalTasks}
-                    onPending={pendingTasks}
-                />}
+                    </table>
+                </div>
+
+                <div>
+                    {<TaskStats 
+                        onDone={completedTasks}
+                        Total={totalTasks}
+                        onPending={pendingTasks}
+                    />}
+                </div>
             </div>
-        </div>
+            </div>
     )
 }
 
