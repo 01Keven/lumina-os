@@ -14,7 +14,7 @@ import { TaskStats } from "./components/TaskStats";
 
 function App() {
     
-    const [filter, setFilter] = useState(['all'])
+    const [filter, setFilter] = useState('all')
 
     // Array para armazenamento das tasks
     const [tasks, setTasks] = useState(() => {
@@ -93,19 +93,32 @@ function App() {
                 <button onClick={() => setFilter('done')}>Done</button>
             </div>
 
-            <ul>
-                {filteredTasks.map( task => (
-                    <TaskItem 
-                        key={task.id}
-                        task={task}
-                        onDelete={handleDeleteTasks}
-                        onToggle={handleToggleTasks} 
-                        onEdit={handleEditTasks}
-                    />
-                    
-                ))}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                        
+                    </tr>
 
-            </ul>
+                </thead>
+                <tbody>
+                    
+                    {filteredTasks.map( task => (
+                        <TaskItem 
+                            key={task.id}
+                            task={task}
+                            onDelete={handleDeleteTasks}
+                            onToggle={handleToggleTasks} 
+                             onEdit={handleEditTasks}
+                        />
+                                
+                    ))}
+                        
+                </tbody>
+
+            </table>
 
             <div>
                 {<TaskStats 
