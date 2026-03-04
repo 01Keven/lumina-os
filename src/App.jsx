@@ -10,9 +10,13 @@
 import { useState, useEffect } from "react";
 import { TaskInput } from "./components/TaskInput";
 import { TaskItem } from "./components/TaskItem";
-
+import { TaskStats } from "./components/TaskStats";
 
 function App() {
+    
+    
+
+    const [filter, setFilter] = useState(['all'])
 
     // Array para armazenamento das tasks
     const [tasks, setTasks] = useState(() => {
@@ -44,8 +48,10 @@ function App() {
             newTask
         ])
     }
-    
-    const [filter, setFilter] = useState(['all', 'done', 'todo'])
+
+    const totalTasks = tasks.length;
+
+    const completedTasks = tasks.filter( task => task.done).length;
     
     const filteredTasks = tasks.filter(task => {
         if (filter === 'todo') return !task.done;
@@ -65,6 +71,8 @@ function App() {
             return task;
         } ))
     }
+
+
 
     return (
         <div>
@@ -89,11 +97,16 @@ function App() {
                     
                 ))}
 
-            </ul> 
+            </ul>
+
+            <div>
+                {<TaskStats 
+                    onDone={completedTasks}
+                    Total={totalTasks}
+                />}
+            </div>
         </div>
     )
 }
-
-
 
 export default App
