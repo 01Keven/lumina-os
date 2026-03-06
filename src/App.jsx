@@ -89,27 +89,33 @@ function App() {
 
                 <h1 className="text-4xl font-bold text-deb-deep mb-8 text-center tracking-tight">Task Master Pro</h1>
 
-                <TaskInput 
-                    onAdd={handleAddTasks} 
-                    onToggle={handleToggleTasks}
-                    className={"flex "}
-                    > 
-                    
-                    <ButtonDropDown 
-                        buttonText={`Filter: ${filter}`}>
-                        {['all', 'todo', 'done'].map((f) => (
-                            <button
-                                key={f}
-                                onClick={() => setFilter(f)}
-                                className={`px-4 py-2 text-sm text-left hover:bg-deb-soft/20 transition-colors capitalize ${filter === f ? 'text-deb-deep font-bold bg-deb-soft/10' : 'text-deb-dark'}`}
-                            >
-                                {f}
-                            </button>
-                        ))}
+                <div className="flex items-center w-full mb-8">
 
-                    </ButtonDropDown>
-                </TaskInput>
+                    <TaskInput 
+                        onAdd={handleAddTasks} 
+                        onToggle={handleToggleTasks}
                     
+                        /> 
+                        
+                        <ButtonDropDown 
+                            buttonText={`Filter `}>
+                                <div className="flex flex-col">
+                                    {['all', 'todo', 'done'].map((f) => (
+                                        <button
+                                            key={f}
+                                            onClick={() => setFilter(f)}
+                                            className={`px-4 py-2 text-sm text-left hover:bg-deb-soft/20 transition-colors capitalize ${
+                        filter === f ? 'text-deb-deep font-bold bg-deb-soft/10' : 'text-deb-dark'}`}
+                                        >
+                                            {f}
+                                        </button>
+                                    ))}
+                                </div>
+
+                        </ButtonDropDown>
+                
+                        
+                </div>
                 <div className="flex gap-2 justify-center my-8">
                     <button onClick={() => setFilter('all')}>All</button>
                     <button onClick={() => setFilter('todo')}>Todo</button>

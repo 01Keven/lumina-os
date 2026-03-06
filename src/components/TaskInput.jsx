@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal } from "./Modal";
 
-export function TaskInput({onAdd, children}) {
+export function TaskInput({onAdd}) {
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -20,12 +20,11 @@ export function TaskInput({onAdd, children}) {
         <>
             <button 
                 onClick={() => setIsModalOpen(true)}
-                className="btn-primary flex items-center gap-2 mb-6"
-            >
-                <span className="text-xl">+</span> Add New Task
+                className="btn-primary items-center"
+            >+ Add
             </button>
 
-            <span>{children}</span>
+            
             <Modal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
