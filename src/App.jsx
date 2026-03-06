@@ -11,6 +11,8 @@ import { useState, useEffect } from "react";
 import { TaskInput } from "./components/TaskInput";
 import { TaskItem } from "./components/TaskItem";
 import { TaskStats } from "./components/TaskStats";
+import { ButtonDropDown } from "./components/ButtonDropDown";
+
 
 function App() {
     
@@ -87,7 +89,26 @@ function App() {
 
                 <h1 className="text-4xl font-bold text-deb-deep mb-8 text-center tracking-tight">Task Master Pro</h1>
 
-                <TaskInput onAdd={handleAddTasks} onToggle={handleToggleTasks} />
+                <TaskInput 
+                    onAdd={handleAddTasks} 
+                    onToggle={handleToggleTasks}
+                    className={"flex "}
+                    > 
+                    
+                    <ButtonDropDown 
+                        buttonText={`Filter: ${filter}`}>
+                        {['all', 'todo', 'done'].map((f) => (
+                            <button
+                                key={f}
+                                onClick={() => setFilter(f)}
+                                className={`px-4 py-2 text-sm text-left hover:bg-deb-soft/20 transition-colors capitalize ${filter === f ? 'text-deb-deep font-bold bg-deb-soft/10' : 'text-deb-dark'}`}
+                            >
+                                {f}
+                            </button>
+                        ))}
+
+                    </ButtonDropDown>
+                </TaskInput>
                     
                 <div className="flex gap-2 justify-center my-8">
                     <button onClick={() => setFilter('all')}>All</button>

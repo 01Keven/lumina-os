@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal } from "./Modal";
 
-export function TaskInput({onAdd, onFiltered}) {
+export function TaskInput({onAdd, children}) {
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -25,6 +25,7 @@ export function TaskInput({onAdd, onFiltered}) {
                 <span className="text-xl">+</span> Add New Task
             </button>
 
+            <span>{children}</span>
             <Modal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
