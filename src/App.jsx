@@ -116,11 +116,6 @@ function App() {
                 
                         
                 </div>
-                <div className="flex gap-2 justify-center my-8">
-                    <button onClick={() => setFilter('all')}>All</button>
-                    <button onClick={() => setFilter('todo')}>Todo</button>
-                    <button onClick={() => setFilter('done')}>Done</button>
-                </div>
 
                 
                 <div className=" overflow-hidden rounded-button border border-deb-soft/30 shadow-sm">
