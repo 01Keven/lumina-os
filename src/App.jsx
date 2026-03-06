@@ -87,13 +87,14 @@ function App() {
 
                 <h1 className="text-4xl font-bold text-deb-deep mb-8 text-center tracking-tight">Task Master Pro</h1>
 
-                <TaskInput onAdd={handleAddTasks} onToggle={handleToggleTasks}/>
-
+                <TaskInput onAdd={handleAddTasks} onToggle={handleToggleTasks} />
+                    
                 <div className="flex gap-2 justify-center my-8">
                     <button onClick={() => setFilter('all')}>All</button>
                     <button onClick={() => setFilter('todo')}>Todo</button>
                     <button onClick={() => setFilter('done')}>Done</button>
                 </div>
+
                 
                 <div className=" overflow-hidden rounded-button border border-deb-soft/30 shadow-sm">
                     <table className="w-full text-left border-collapse">

@@ -6,6 +6,8 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
     const [isEditing, setIsEditing] = useState(false);
     const [tempText, setTempText] = useState(task.text)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isCloseModalOpen, setIsCloseModalOpen] = useState(false)
+    
 
     const handleSave = () => {
         if (tempText.trim().length >= 3) {
@@ -22,6 +24,7 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
     const handleCancel = () => {
         setTempText(task.text)
         setIsModalOpen(false)
+        setIsCloseModalOpen(false)
     }
 
     return (
@@ -52,12 +55,35 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                     </button>
 
                     <button 
-                        onClick={() => onDelete(task.id)} 
+                        onClick={() => setIsCloseModalOpen(true)} 
                         className="text-red-400 hover:text-red-600 transition-colors"
                     >
                         Delete
                     </button>
                 </div>
+
+                <Modal
+                    isOpen={isCloseModalOpen}
+                    onClose={handleCancel}
+                    title="Delete Task"
+                >
+
+                    <div className="flex justify-between items-center w-full mt-6">
+                        <button
+                            className="px-4 py-2 text-deb-nude font-medium hover:bg-deb-soft/10 rounded-button transition-colors"
+                            onClick={handleCancel}
+                        >
+                            Cancel
+                        </button>
+                        
+                        <button 
+                            onClick={() => onDelete(task.id)} 
+                            className="px-6 py-2 bg-red-500 text-white font-bold rounded-button hover:bg-red-600 transition-all shadow-md active:scale-95"
+                        >
+                            Yes, Delete
+                        </button>
+                    </div>
+                </Modal>
 
                 {/* Modal de Edição */}
                 <Modal

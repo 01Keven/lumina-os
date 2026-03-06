@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal } from "./Modal";
 
-export function TaskInput({onAdd}) {
+export function TaskInput({onAdd, onFiltered}) {
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -15,8 +15,6 @@ export function TaskInput({onAdd}) {
             alert('A tarefa precisa de pelo menos 3 caracteres')
         }
     }
-
-
 
     return (
         <>
