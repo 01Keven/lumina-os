@@ -1,184 +1,77 @@
-/**
- * 
- * Cria estado useState
- * Cria as funções de ação: addTask, deleteTask, toggleDone
- * Filtra a lista antes de mandar para os outros
- * Passar os dados via Props
- *  
- **/
-
 import { useState, useEffect } from "react";
-import { TaskInput } from "./components/TaskInput";
-import { TaskItem } from "./components/TaskItem";
-import { TaskStats } from "./components/TaskStats";
-import { ButtonDropDown } from "./components/ButtonDropDown";
 import { Sidebar } from "./components/Sidebar";
+import { HomeView } from "./pages/HomeView";
+import { TasksView } from "./pages/TasksView";
 
 function App() {
-    
     const [currentPage, setCurrentPage] = useState('home');
     const [filter, setFilter] = useState('all');
-
-    // Array para armazenamento das tasks
+    
     const [tasks, setTasks] = useState(() => {
         const saveData = localStorage.getItem("TASKS_V1");
+        return saveData ? JSON.parse(saveData) : [];
+    });
 
-        if (saveData) {
-            return JSON.parse(saveData);
-        }
-
-        return [];
-    })
-
-    
     useEffect(() => {
         localStorage.setItem("TASKS_V1", JSON.stringify(tasks));
-    }, [tasks]); // so age quando muda tasks
-    
-    // Esqueleto da Task
-    function handleAddTasks(text) {
-        const newTask = {
-            id: Date.now(),
-            text: text,
-            done: false,
-        }
-        
-        setTasks([
-            ...tasks,
-            newTask
-        ])
-    }
+    }, [tasks]);
 
-    const totalTasks = tasks.length;
+    // Handlers (Lógica de Negócio)
+    const handlers = {
+        onAdd: (text) => setTasks([...tasks, { id: Date.now(), text, done: false }]),
+        onDelete: (id) => setTasks(tasks.filter(t => t.id !== id)),
+        onToggle: (id) => setTasks(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t)),
+        onEdit: (id, text) => setTasks(tasks.map(t => t.id === id ? { ...t, text } : t))
+    };
 
-    const completedTasks = tasks.filter( task => task.done).length;
+    // Cálculos de Stats
+    const stats = {
+        total: tasks.length,
+        done: tasks.filter(t => t.done).length,
+        pending: tasks.length - tasks.filter(t => t.done).length
+    };
 
-    const pendingTasks = totalTasks - completedTasks;
-    
-    const filteredTasks = tasks.filter(task => {
-        if (filter === 'todo') return !task.done;
-        if (filter === 'done') return task.done;
+    const filteredTasks = tasks.filter(t => {
+        if (filter === 'todo') return !t.done;
+        if (filter === 'done') return t.done;
         return true;
-    })
+    });
 
-    function handleDeleteTasks(id) {
-        setTasks(tasks.filter(task => task.id !== id))
-    }
-    
-    function handleToggleTasks(id) {
-        setTasks(tasks.map( task => {
-            if (task.id == id) {
-                return {...task, done: !task.done};
-            }
-            return task;
-        } ))
-    }
+    const renderPage = () => {
+        switch (currentPage) {
+            case 'home':
+                return <HomeView stats={stats} />;
+            case 'tasks':
+                return (
+                    <TasksView 
+                        tasks={filteredTasks} 
+                        filter={filter}
+                        setFilter={setFilter}
+                        handlers={handlers}
+                        stats={stats}
+                    />
+                );
+            case 'calendar':
+                return <div className="p-10 text-deb-deep font-bold text-2xl">Calendar View (Coming Soon)</div>;
+            default:
+                return <HomeView stats={stats} />;
+        }
+    };
 
-    function handleEditTasks(id, newTask) {
-        setTasks(tasks.map( task => {
-            if (task.id == id) {
-                return {...task, text: newTask};
-            }
-            return task;
-        } ))
-    }
-    
-
+    // --- O BLOCO QUE ESTAVA FALTANDO ABAIXO ---
     return (
-        <div className="flex font-sans min-h-screen bg-deb-soft/5 ">
-            <Sidebar 
-                activePage={currentPage}
-                onPageChange={setCurrentPage}
-            >
-                <main className="flex-1 p-10 overflow-y-auto">
-                    <div className="max-w-6xl mx-auto">
-
-                        {currentPage === 'home' ? (
-                            <section>
-                                <h1> Welcome</h1>
-                            </section>
-                        ) : (
-                            <section>
-                                
-                            </section>
-                        )}
-
-                    </div>
-                </main>
-
-            </Sidebar>
-            <div className="card w-full max-w-4xl">
-
-                <h1 className="text-4xl font-bold text-deb-deep mb-8 text-center tracking-tight">Task Master Pro</h1>
-
-                <div className="flex items-center w-full mb-8">
-
-                    <TaskInput 
-                        onAdd={handleAddTasks} 
-                        onToggle={handleToggleTasks}
-                    
-                        /> 
-                        
-                        <ButtonDropDown 
-                            buttonText={`Filter `}>
-                                <div className="flex flex-col">
-                                    {['all', 'todo', 'done'].map((f) => (
-                                        <button
-                                            key={f}
-                                            onClick={() => setFilter(f)}
-                                            className={`px-4 py-2 text-sm text-left hover:bg-deb-soft/20 transition-colors capitalize ${
-                        filter === f ? 'text-deb-deep font-bold bg-deb-soft/10' : 'text-deb-dark'}`}
-                                        >
-                                            {f}
-                                        </button>
-                                    ))}
-                                </div>
-
-                        </ButtonDropDown>
-                
-                        
+        <div className="flex min-h-screen bg-deb-soft/5">
+            {/* Aqui usamos a Sidebar importada */}
+            <Sidebar activePage={currentPage} onPageChange={setCurrentPage} />
+            
+            <main className="flex-1 p-10">
+                <div className="max-w-6xl mx-auto">
+                    {/* Aqui executamos a função que renderiza a página atual */}
+                    {renderPage()}
                 </div>
-
-                
-                <div className=" overflow-hidden rounded-button border border-deb-soft/30 shadow-sm">
-                    <table className="w-full text-left border-collapse">
-                        <thead className="bg-deb-deep text-white text-sm uppercase tracking-widest">
-                            <tr>
-                                <th className="p-4 font-semibold">Name</th>
-                                <th className="p-4 font-semibold">Status</th>
-                                <th className="p-4 font-semibold text-center">Actions</th>
-                                
-                            </tr>
-
-                        </thead>
-                        <tbody className="divive-y divide-deb-soft/20">
-                            
-                            {filteredTasks.map( task => (
-                                <TaskItem 
-                                    key={task.id}
-                                    task={task}
-                                    onDelete={handleDeleteTasks}
-                                    onToggle={handleToggleTasks} 
-                                    onEdit={handleEditTasks}
-                                />
-                                        
-                            ))}
-                                
-                        </tbody>
-
-                    </table>
-                </div>
-
-                <div>
-                    {<TaskStats 
-                        onDone={completedTasks}
-                        Total={totalTasks}
-                        onPending={pendingTasks}
-                    />}
-                </div>
-            </div>
-            </div>
-    )
+            </main>
+        </div>
+    );
 }
 
-export default App
+export default App;

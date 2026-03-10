@@ -1,7 +1,7 @@
-import { TaskInput } from "./TaskInput";
-import { TaskItem } from "./TaskItem";
-import { TaskStats } from "./TaskStats";
-import { ButtonDropDown } from "./ButtonDropDown";
+import { TaskInput } from '../components/TaskInput';
+import { ButtonDropDown } from '../components/ButtonDropDown';
+import { TaskItem } from '../components/TaskItem';
+import { TaskStats } from '../components/TaskStats';
 
 export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
     return (
