@@ -12,11 +12,12 @@ import { TaskInput } from "./components/TaskInput";
 import { TaskItem } from "./components/TaskItem";
 import { TaskStats } from "./components/TaskStats";
 import { ButtonDropDown } from "./components/ButtonDropDown";
-
+import { Sidebar } from "./components/Sidebar";
 
 function App() {
     
-    const [filter, setFilter] = useState('all')
+    const [currentPage, setCurrentPage] = useState('home');
+    const [filter, setFilter] = useState('all');
 
     // Array para armazenamento das tasks
     const [tasks, setTasks] = useState(() => {
@@ -84,7 +85,28 @@ function App() {
     
 
     return (
-        <div className="min-h-screen bg-deb-soft/10 p-container flex flex-col items-center">
+        <div className="flex font-sans min-h-screen bg-deb-soft/5 ">
+            <Sidebar 
+                activePage={currentPage}
+                onPageChange={setCurrentPage}
+            >
+                <main className="flex-1 p-10 overflow-y-auto">
+                    <div className="max-w-6xl mx-auto">
+
+                        {currentPage === 'home' ? (
+                            <section>
+                                <h1> Welcome</h1>
+                            </section>
+                        ) : (
+                            <section>
+                                
+                            </section>
+                        )}
+
+                    </div>
+                </main>
+
+            </Sidebar>
             <div className="card w-full max-w-4xl">
 
                 <h1 className="text-4xl font-bold text-deb-deep mb-8 text-center tracking-tight">Task Master Pro</h1>
