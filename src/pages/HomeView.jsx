@@ -1,6 +1,6 @@
 export function HomeView({ stats }) {
     return (
-        <div className="animate-in fade-in slide-in-from-left-4 duration-500">
+        <div className="p-8 animate-in fade-in slide-in-from-left-4 duration-500">
             <h1 className="text-4xl font-black text-deb-deep mb-2">Welcome Back!</h1>
             <p className="text-deb-nude mb-8">Here is your productivity overview.</p>
             

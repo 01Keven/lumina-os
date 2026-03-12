@@ -58,15 +58,13 @@ function App() {
         }
     };
 
-    // --- O BLOCO QUE ESTAVA FALTANDO ABAIXO ---
     return (
         <div className="flex min-h-screen bg-deb-soft/5">
-            {/* Aqui usamos a Sidebar importada */}
+    
             <Sidebar activePage={currentPage} onPageChange={setCurrentPage} />
             
-            <main className="flex-1 p-10">
-                <div className="max-w-6xl mx-auto">
-                    {/* Aqui executamos a função que renderiza a página atual */}
+            <main className="flex-1">
+                <div className="max-w-7xl mx-auto">
                     {renderPage()}
                 </div>
             </main>

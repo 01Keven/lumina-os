@@ -31,7 +31,7 @@
 /* --- Estilos Globais Base --- */
 @layer base {
   body {
-    @apply bg-deb-soft/10 text-deb-dark antialiased font-sans;
+    @apply text-deb-dark antialiased font-sans;
   }
 
   /* Deixar o scroll mais elegante */

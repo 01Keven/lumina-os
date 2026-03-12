@@ -7,8 +7,7 @@ export function Sidebar({ activePage, onPageChange }) {
     return (
         <aside className="w-64 bg-deb-dark h-screen sticky top-0 flex flex-col text-white shadow-2xl">
             <div className="p-8 border-b border-deb-soft/10">
-                <h2 className="text-2xl font-black text-deb-soft tracking-tighter text-center">
-                    TASK PRO
+                <h2 className="text-2xl font-black text-deb-soft tracking-tighter text-center">TASK PRO
                 </h2>
             </div>
 

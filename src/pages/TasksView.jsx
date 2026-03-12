@@ -6,12 +6,9 @@ import { TaskStats } from '../components/TaskStats';
 export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
     return (
         <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-            <div className="card w-full p-8 bg-white shadow-lux rounded-app">
+            <div className=" p-8 bg-white rounded-app">
                 <header className="flex flex-col md:flex-row items-center justify-between w-full mb-8 gap-4">
-                    <div>
-                        <h1 className="text-3xl font-black text-deb-deep tracking-tight">My Tasks</h1>
-                        <p className="text-deb-nude text-sm">Manage and execute your daily goals</p>
-                    </div>
+                    
 
                     <div className="flex items-center gap-3">
                         <TaskInput onAdd={handlers.onAdd} /> 
