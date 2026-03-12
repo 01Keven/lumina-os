@@ -1,64 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- Paleta de Cores Deborah --- */
-  --color-deb-deep: #553159;   /* Roxo Profundo (Títulos e Botões Primários) */
-  --color-deb-purple: #8372A6; /* Roxo Médio (Filtros e Ícones) */
-  --color-deb-soft: #BDB0D9;   /* Lavanda (Fundo de cards e bordas suaves) */
-  --color-deb-nude: #A68C86;   /* Marrom Nude (Textos secundários e separadores) */
-  --color-deb-dark: #0D0D0D;   /* Dark (Texto principal e contraste) */
-
-  /* --- Tipografia --- */
+  /* --- Nova Paleta Deborah: Royal & Slate --- */
+  --color-deb-deep: #4F46E5;   /* Indigo/Roxo Elétrico (Botão Primário e Ativo) */
+  --color-deb-purple: #818CF8; /* Roxo Vibrante (Hover e Ícones) */
+  --color-deb-dark: #0F172A;   /* Slate Dark (Sidebar e Títulos) - Melhor legibilidade */
+  --color-deb-soft: #F1F5F9;   /* Slate Light (Fundo do sistema e cards) */
+  --color-deb-nude: #64748B;   /* Slate Médio (Textos secundários e labels) */
+  
+  /* Mantendo sua estrutura de design */
   --font-sans: "Inter", "Satoshi", "ui-sans-serif", "system-ui";
   --text-2xs: 0.65rem;
 
-  /* --- Espaçamentos Customizados (Ritmo Visual) --- */
   --spacing-container: 2rem;
   --spacing-input-py: 0.75rem;
 
-  /* --- Curvaturas (Borders) --- */
-  --radius-app: 1.5rem;    /* Arredondamento dos cards principais */
-  --radius-button: 0.75rem; /* Arredondamento dos botões */
+  --radius-app: 1.25rem;    
+  --radius-button: 0.75rem; 
 
-  /* --- Sombras Personalizadas --- */
-  --shadow-lux: 0 10px 30px -5px rgba(85, 49, 89, 0.15);
-  --shadow-inner-soft: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-
-  /* --- Animações --- */
-  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Sombra mais moderna e sutil */
+  --shadow-lux: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+  --shadow-inner-soft: inset 0 2px 4px 0 rgba(0, 0, 0, 0.03);
 }
 
-/* --- Estilos Globais Base --- */
 @layer base {
   body {
-    @apply text-deb-dark antialiased font-sans;
+    /* Usando o deb-soft no fundo para dar destaque aos cards brancos */
+    @apply bg-deb-soft text-deb-dark antialiased font-sans;
   }
 
-  /* Deixar o scroll mais elegante */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-deb-soft rounded-full;
-  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { @apply bg-deb-nude/30 rounded-full; }
 }
 
-/* --- Utilitários de Design Escaláveis --- */
 @layer components {
   .btn-primary {
-    @apply bg-deb-deep text-white px-6 py-2 rounded-button font-semibold 
+    @apply bg-deb-deep text-white px-6 py-2 rounded-button font-bold 
            hover:bg-deb-purple transition-all duration-300 shadow-md 
-           active:scale-95 disabled:opacity-50;
+           active:scale-95 disabled:opacity-50 flex items-center justify-center;
   }
 
   .input-field {
-    @apply w-full px-4 py-input-py bg-white border border-deb-soft/40 
+    @apply w-full px-4 py-input-py bg-white border border-slate-200 
            rounded-button shadow-inner-soft focus:outline-none 
-           focus:ring-2 focus:ring-deb-purple/30 focus:border-deb-purple 
-           transition-all duration-200;
+           focus:ring-2 focus:ring-deb-deep/20 focus:border-deb-deep 
+           transition-all duration-200 placeholder:text-slate-400;
   }
 
   .card {
+    /* Agora o card branco vai "saltar" do fundo cinza claro */
     @apply bg-white rounded-app shadow-lux p-8 border border-white;
   }
 }

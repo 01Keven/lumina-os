@@ -28,9 +28,9 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
     }
 
     return (
-        <tr className="hover:bg-deb-soft/5 transition-colors group">
+        <tr className="hover:bg-deb-purple/5 transition-colors group">
             <td 
-                className={`p-4 cursor-pointer transition-all ${task.done ? 'line-through text-deb-nude opacity-60' : 'text-deb-dark font-medium'}`}
+                className={`p-4 cursor-pointer transition-all ${task.done ? 'line-through text-deb-nude opacity-60' : 'text-deb-deep font-medium'}`}
                 onClick={() => onToggle(task.id)}
             >
                 {task.text}

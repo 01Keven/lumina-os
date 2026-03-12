@@ -5,8 +5,8 @@ import { TaskStats } from '../components/TaskStats';
 
 export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
     return (
-        <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-            <div className=" p-8 bg-white rounded-app">
+        <div className="animate-in fade-in slide-in-from-right-4 duration-500 bg-deb-soft">
+            <div className=" p-8 rounded-app">
                 <header className="flex flex-col md:flex-row items-center justify-between w-full mb-8 gap-4">
                     
 
@@ -31,16 +31,16 @@ export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
                     </div>
                 </header>
 
-                <div className="overflow-hidden rounded-button border border-deb-soft/30 shadow-sm">
+                <div className="overflow-hidden border-deb-soft/30 shadow-sm">
                     <table className="w-full text-left border-collapse">
-                        <thead className="bg-deb-deep text-white text-xs uppercase tracking-widest">
+                        <thead className="border-b border-gray-100 bg-white text-shadow-deb-deep text-xs uppercase tracking-widest">
                             <tr>
-                                <th className="p-4 font-semibold">Name</th>
+                                <th className="p-4 font-semibold">All Tasks</th>
                                 <th className="p-4 font-semibold">Status</th>
                                 <th className="p-4 font-semibold text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-deb-soft/20">
+                        <tbody className="divide-y divide-deb-soft/80">
                             {tasks.map(task => (
                                 <TaskItem 
                                     key={task.id} 

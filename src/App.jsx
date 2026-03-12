@@ -59,7 +59,7 @@ function App() {
     };
 
     return (
-        <div className="flex min-h-screen bg-deb-soft/5">
+        <div className="flex min-h-screen bg-deb-dark/5">
     
             <Sidebar activePage={currentPage} onPageChange={setCurrentPage} />
             
