@@ -28,6 +28,12 @@ export function Sidebar({ activePage, onPageChange }) {
                     </button>))}
                 
             </nav>
+            <div className="p-8 text-center">
+                <footer className="text-deb-deep font-medium text-sm">
+                    All Rights Reserved &copy; 2026 - Keven Christian
+                </footer>
+                
+            </div>
         </aside>
     )
 }
