@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Modal } from "./Modal";
+import { Plus } from 'lucide-react';
 
 export function TaskInput({onAdd}) {
     const [text, setText] = useState('');
@@ -20,8 +21,10 @@ export function TaskInput({onAdd}) {
         <>
             <button 
                 onClick={() => setIsModalOpen(true)}
-                className="btn-primary items-center"
-            >+ Add
+                className="btn-primary bg-deb-deep items-center"
+            >
+                <Plus size={20} />
+                Add
             </button>
 
             

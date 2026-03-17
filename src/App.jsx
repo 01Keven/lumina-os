@@ -59,12 +59,12 @@ function App() {
     };
 
     return (
-        <div className="flex min-h-screen bg-deb-dark/5">
+        <div className="flex min-h-screen ">
     
             <Sidebar activePage={currentPage} onPageChange={setCurrentPage} />
             
             <main className="flex-1">
-                <div className="max-w-7xl mx-auto">
+                <div className="mx-auto">
                     {renderPage()}
                 </div>
             </main>

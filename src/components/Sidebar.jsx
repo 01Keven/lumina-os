@@ -1,13 +1,15 @@
+import { Home, Target} from 'lucide-react';
+
 export function Sidebar({ activePage, onPageChange }) {
     const menuItems = [
-        {id: 'home', label: "Home", icon: '🏠'},
-        {id: 'tasks', label: "My Tasks", icon: '🎯'}
+        {id: 'home', label: "Home", icon: <Home size={20}/>},
+        {id: 'tasks', label: "My Tasks", icon: <Target size={20}/>}
     ];
 
     return (
         <aside className="w-60 bg-deb-soft h-screen sticky flex flex-col text-white shadow-2xl">
             <div className="p-8 border-b border-b-deb-dark/5">
-                <h2 className="text-2xl font-semibold text-deb-nude text-center">TASK PRO
+                <h2 className="text-2xl font-semibold text-deb-deep text-center">TASK PRO
                 </h2>
             </div>
 
@@ -18,7 +20,7 @@ export function Sidebar({ activePage, onPageChange }) {
                         onClick={() => onPageChange(item.id)}
                         className={`rounded-xl w-full flex items-center gap-4 px-5 py-2 transition-all duration-300 ${
                             activePage === item.id
-                            ? 'bg-deb-purple text-whit scale-106'
+                            ? 'bg-deb-deep text-white scale-106'
                             : 'hover:bg-deb-purple/20 text-deb-purple'
                         }`}
                     >

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Modal } from "./Modal";
+import { Edit, Trash2  } from 'lucide-react';
 
 export function TaskItem({task, onDelete, onToggle, onEdit}) {
 
@@ -44,6 +45,10 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                 </span>
             </td>
 
+            <td>
+
+            </td>
+
             <td className="p-4 text-center">
                 <div className="flex gap-4 justify-center">
                     {/* Botão que abre o Modal de Edição */}
@@ -51,14 +56,14 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                         onClick={() => setIsModalOpen(true)} 
                         className="text-deb-purple hover:text-deb-deep transition-colors"
                     >
-                        Edit
+                        <Edit size={20}/>
                     </button>
 
                     <button 
                         onClick={() => setIsCloseModalOpen(true)} 
                         className="text-red-400 hover:text-red-600 transition-colors"
                     >
-                        Delete
+                        <Trash2 size={20}/>
                     </button>
                 </div>
 

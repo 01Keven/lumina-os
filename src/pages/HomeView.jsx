@@ -1,8 +1,11 @@
 export function HomeView({ stats }) {
     return (
-        <div className="p-16 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft">
-            <h1 className="text-4xl font-black text-deb-deep mb-2">Welcome Back!</h1>
-            <p className="text-deb-nude mb-8">Here is your productivity overview.</p>
+        <div className="p-8 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft">
+            <div className="bg-deb-deep p-8 mb-8 rounded-app shadow-sm">
+                <h1 className="text-4xl font-black text-deb-soft mb-2">Welcome Back!</h1>
+                <p className="text-deb-soft mb-8">Here is your productivity overview.</p>
+
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="card p-6 border border-deb-purple bg-white shadow-sm hover:shadow-md transition-shadow">

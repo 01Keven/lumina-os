@@ -13,7 +13,7 @@ export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
                     <div className="flex items-center gap-3">
                         <TaskInput onAdd={handlers.onAdd} /> 
                         
-                        <ButtonDropDown buttonText={`Filter: ${filter}`}>
+                        <ButtonDropDown buttonText={`Filter`}>
                             <div className="flex flex-col">
                                 {['all', 'todo', 'done'].map((f) => (
                                     <button
@@ -35,8 +35,12 @@ export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
                     <table className="w-full text-left border-collapse">
                         <thead className="border-b border-gray-100 bg-white text-shadow-deb-deep text-xs uppercase tracking-widest">
                             <tr>
-                                <th className="p-4 font-semibold">All Tasks</th>
+                                <th className="p-4 font-semibold">
+                                    All Tasks
+                                    <span className='pe-2 pl-2 m-2 bg-gray-200 rounded-xl text-deb-nude'>{stats.total}</span>
+                                </th>
                                 <th className="p-4 font-semibold">Status</th>
+                                <th className="p-4 font-semibold">Date</th>
                                 <th className="p-4 font-semibold text-center">Actions</th>
                             </tr>
                         </thead>
@@ -54,8 +58,10 @@ export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
                     </table>
                 </div>
 
-                <TaskStats onDone={stats.done} Total={stats.total} onPending={stats.pending} />
+                {/* <TaskStats onDone={stats.done} Total={stats.total} onPending={stats.pending} /> */}
             </div>
+
+
         </div>
     );
 }
