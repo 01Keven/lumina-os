@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { Modal } from "./Modal";
 import { Plus } from 'lucide-react';
+import DatePicker from "react-datepicker";
+import { Calendar } from 'lucide-react';
+
 
 export function TaskInput({onAdd}) {
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [dueDate, setDueDate] = useState(null);
 
     const handleAction = () => {
         if (text.trim().length >= 3) {
-            onAdd(text)
+            onAdd(text, dueDate)
             setIsModalOpen(false)
             setText('')
+            setDueDate(null)
 
         } else {
             alert('A tarefa precisa de pelo menos 3 caracteres')
@@ -46,6 +51,23 @@ export function TaskInput({onAdd}) {
                         onChange={e => setText(e.target.value)} 
                         onKeyDown={(e) => e.key === 'Enter' && handleAction()}
                     />
+
+                    <label htmlFor="">
+                        Due Date (optional)
+                    </label>
+                    <div>
+                        <DatePicker
+                            selected={dueDate}
+                            onChange={(date) => setDueDate(date)}
+                            isClearable
+                            showTimeSelect
+                            dateFormat="Pp"
+                            className="input-field w-full"
+                            showPopperArrow={false}
+                            placeholderText="Select a date"
+                        />
+                        <Calendar className="absolute right-3 top-2.5 text-deb-nude pointer-events-none " size={18} />
+                    </div>
                     
                     <div className="flex gap-3 mt-4">
                         <button 

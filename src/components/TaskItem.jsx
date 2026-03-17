@@ -1,31 +1,46 @@
 import { useState } from "react"
 import { Modal } from "./Modal";
-import { Edit, Trash2  } from 'lucide-react';
-
+import { Edit, Trash2, Calendar as CalendarIcon  } from 'lucide-react';
+  
 export function TaskItem({task, onDelete, onToggle, onEdit}) {
 
     const [isEditing, setIsEditing] = useState(false);
-    const [tempText, setTempText] = useState(task.text)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [isCloseModalOpen, setIsCloseModalOpen] = useState(false)
-    
+    const [tempText, setTempText] = useState(task.text);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
+    const displayDate = (date) => {
+        if (!date) {
+            return (
+                <div className="flex items-center gap-2 text-deb-nude opacity-40 italic">
+                    <CalendarIcon size={14} />
+                    <span>N/A</span>
+                </div>
+            );
+        }
+        // Converte a string/objeto de volta para data e formata
+        return new Date(date).toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit'
+        });
+    };
 
     const handleSave = () => {
         if (tempText.trim().length >= 3) {
-            onEdit(task.id, tempText)
-            setIsEditing(false)
-            setIsModalOpen(false)
+            onEdit(task.id, tempText);
+            setIsEditing(false);
+            setIsModalOpen(false);
             // setTempText('')
             
         } else {
-            alert("precisa ser maior que 3")  
+            alert("precisa ser maior que 3");
         } 
     };
 
     const handleCancel = () => {
-        setTempText(task.text)
-        setIsModalOpen(false)
-        setIsCloseModalOpen(false)
+        setTempText(task.text);
+        setIsModalOpen(false);
+        setIsCloseModalOpen(false);
     }
 
     return (
@@ -45,7 +60,8 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                 </span>
             </td>
 
-            <td>
+            <td className="p-4 test-sm font-medium text-deb-nude">
+                {displayDate(task.dueDate)}
 
             </td>
 
