@@ -1,13 +1,16 @@
 import { useState } from "react"
 import { Modal } from "./Modal";
 import { Edit, Trash2, Calendar as CalendarIcon  } from 'lucide-react';
-  
+import DatePicker from "react-datepicker";
+
 export function TaskItem({task, onDelete, onToggle, onEdit}) {
 
     const [isEditing, setIsEditing] = useState(false);
     const [tempText, setTempText] = useState(task.text);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
+    const [tempDate, setTempDate] = useState(task.dueDate ? new Date(task.dueDate) : null);
+    
     const displayDate = (date) => {
         if (!date) {
             return (
@@ -21,13 +24,15 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
         return new Date(date).toLocaleDateString('pt-BR', {
             day: '2-digit',
             month: '2-digit',
-            year: '2-digit'
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
         });
     };
 
     const handleSave = () => {
         if (tempText.trim().length >= 3) {
-            onEdit(task.id, tempText);
+            onEdit(task.id, tempText, tempDueDate);
             setIsEditing(false);
             setIsModalOpen(false);
             // setTempText('')
@@ -125,6 +130,24 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                             onKeyDown={(e) => e.key === 'Enter' && handleSave()}
                         />
 
+                        <div>
+                            <DatePicker
+                                selected={tempDate} // No TaskItem use 'tempDate'
+                                onChange={(date) => setTempDate(date)} // No TaskItem use 'setTempDate'
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={15}
+                                timeCaption="Hora"
+                                dateFormat="dd/MM/yyyy HH:mm"
+                                placeholderText="Selecione data e hora"
+                                className="input-field w-full"
+                                isClearable
+                                showYearDropdown // Permite mudar o ano facilmente
+                                scrollableYearDropdown
+                                yearDropdownItemNumber={15}
+                                autoComplete="off"
+                            />
+                        </div>
                         <div className="flex gap-3 mt-4">
                             <button 
                                 className="flex-1 px-4 py-2 text-deb-nude font-medium hover:bg-deb-soft/10 rounded-button transition-colors"

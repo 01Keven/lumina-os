@@ -23,26 +23,28 @@
   --shadow-inner-soft: inset 0 2px 4px 0 rgba(0, 0, 0, 0.03);
 }
 
+/* Garante que o calendário apareça na frente de tudo */
+.react-datepicker-popper {
+    z-index: 9999 !important;
+}
+
+/* Deixa o calendário com a largura correta dentro dos seus inputs */
 .react-datepicker-wrapper {
     width: 100%;
 }
 
-
-/* Estilizando as cores do calendário para combinar com seu deb-deep */
+/* Estilo para o calendário parecer parte da sua paleta Deborah */
 .react-datepicker__header {
-    background-color: #1a1a1a !important; /* Exemplo de cor escura */
+    background-color: #f8fafc; /* Slate 50 */
+    border-bottom: 1px solid #e2e8f0;
 }
+
 .react-datepicker__day--selected {
-    background-color: #4a148c !important; /* deb-purple */
+    background-color: #4F46E5 !important; /* Seu deb-deep */
+    border-radius: 0.5rem;
 }
 
 
-
-.react-datepicker__input-container input {
-    /* Garante que o input da data herde o estilo do seu 'input-field' */
-    width: 100%;
-    outline: none;
-}
 @layer base {
   body {
     /* Usando o deb-soft no fundo para dar destaque aos cards brancos */

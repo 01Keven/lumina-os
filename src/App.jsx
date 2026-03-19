@@ -18,10 +18,10 @@ function App() {
 
     // Handlers (Lógica de Negócio)
     const handlers = {
-        onAdd: (text) => setTasks([...tasks, { id: Date.now(), text, done: false, dueDate: null }]),
+        onAdd: (text, dueDate) => setTasks([...tasks, { id: Date.now(), text, done: false, dueDate: dueDate}]),
         onDelete: (id) => setTasks(tasks.filter(t => t.id !== id)),
         onToggle: (id) => setTasks(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t)),
-        onEdit: (id, text) => setTasks(tasks.map(t => t.id === id ? { ...t, text, dueDate: dueDate !== undefined ? dueDate : t.dueDate } : t))
+        onEdit: (id, text, dueDate) => setTasks(tasks.map(t => t.id === id ? { ...t, text, dueDate: dueDate} : t))
     };
 
     // Cálculos de Stats

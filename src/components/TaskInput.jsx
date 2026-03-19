@@ -52,19 +52,25 @@ export function TaskInput({onAdd}) {
                         onKeyDown={(e) => e.key === 'Enter' && handleAction()}
                     />
 
-                    <label htmlFor="">
+                    <label>
                         Due Date (optional)
                     </label>
-                    <div>
+                    <div className="relative">
                         <DatePicker
-                            selected={dueDate}
-                            onChange={(date) => setDueDate(date)}
-                            isClearable
+                            selected={dueDate} // No TaskItem use 'tempDate'
+                            onChange={(date) => setDueDate(date)} // No TaskItem use 'setTempDate'
                             showTimeSelect
-                            dateFormat="Pp"
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            timeCaption="Hora"
+                            dateFormat="dd/MM/yyyy HH:mm"
+                            placeholderText="Selecione data e hora"
                             className="input-field w-full"
-                            showPopperArrow={false}
-                            placeholderText="Select a date"
+                            isClearable
+                            showYearDropdown // Permite mudar o ano facilmente
+                            scrollableYearDropdown
+                            yearDropdownItemNumber={15}
+                            autoComplete="off"
                         />
                         <Calendar className="absolute right-3 top-2.5 text-deb-nude pointer-events-none " size={18} />
                     </div>
