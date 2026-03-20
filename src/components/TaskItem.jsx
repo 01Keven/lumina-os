@@ -21,7 +21,7 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
             );
         }
         // Converte a string/objeto de volta para data e formata
-        return new Date(date).toLocaleDateString('pt-BR', {
+        return new Date(date).toLocaleDateString('en-US', {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
@@ -139,7 +139,7 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                                 timeFormat="HH:mm"
                                 timeIntervals={15}
                                 timeCaption="Hora"
-                                dateFormat="dd/MM/yyyy HH:mm"
+                                dateFormat="MM/dd/yyyy HH:mm"
                                 placeholderText="Selecione data e hora"
                                 className="input-field w-full"
                                 isClearable

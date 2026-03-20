@@ -9,14 +9,14 @@ import "react-datepicker/dist/react-datepicker.css";
 export function TaskInput({onAdd}) {
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [dueDate, setDueDate] = useState(null);
+    const [tempDate, setTempDate] = useState(null);
 
     const handleAction = () => {
         if (text.trim().length >= 3) {
-            onAdd(text, dueDate)
+            onAdd(text, tempDate)
             setIsModalOpen(false)
             setText('')
-            setDueDate(null)
+            setTempDate(null)
 
         } else {
             alert('A tarefa precisa de pelo menos 3 caracteres')
@@ -59,12 +59,24 @@ export function TaskInput({onAdd}) {
                     <div className="relative">
                 
                             
-                            <DatePicker
-                                label="Due Date"
-                                selected={dueDate} // No TaskItem use 'tempDate'
-                                onChange={(date) => setDueDate(date)}
-                                dateFormat="MM/DD/YYYY" // No TaskItem use 'setTempDate'
-                            />
+                            <div>
+                                <DatePicker
+                                            selected={tempDate} // No TaskItem 'tempDate'
+                                            onChange={(date) => setTempDate(date)} //TaskItem use 'setTempDate'
+                                            showTimeSelect
+                                            timeFormat="HH:mm"
+                                            timeIntervals={15}
+                                            timeCaption="Hora"
+                                            dateFormat="MM/dd/yyyy HH:mm"
+                                            placeholderText="Selecione data e hora"
+                                            className="input-field w-full"
+                                            isClearable
+                                            showYearDropdown // Permite mudar o facilmente
+                                            scrollableYearDropdown
+                                            yearDropdownItemNumber={15}
+                                            autoComplete="off"
+                                        />
+                                    </div>
                             <Calendar className="absolute right-3 top-2.5 text-deb-nude pointer-events-none " size={18} />
                         
                     </div>
