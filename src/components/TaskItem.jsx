@@ -32,9 +32,10 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
 
     const handleSave = () => {
         if (tempText.trim().length >= 3) {
-            onEdit(task.id, tempText, tempDueDate);
+            onEdit(task.id, tempText, tempDate);
             setIsEditing(false);
             setIsModalOpen(false);
+            setTempDate(null);
             // setTempText('')
             
         } else {

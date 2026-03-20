@@ -3,6 +3,7 @@ import { Modal } from "./Modal";
 import { Plus } from 'lucide-react';
 import DatePicker from "react-datepicker";
 import { Calendar } from 'lucide-react';
+import "react-datepicker/dist/react-datepicker.css";
 
 
 export function TaskInput({onAdd}) {
@@ -56,23 +57,16 @@ export function TaskInput({onAdd}) {
                         Due Date (optional)
                     </label>
                     <div className="relative">
-                        <DatePicker
-                            selected={dueDate} // No TaskItem use 'tempDate'
-                            onChange={(date) => setDueDate(date)} // No TaskItem use 'setTempDate'
-                            showTimeSelect
-                            timeFormat="HH:mm"
-                            timeIntervals={15}
-                            timeCaption="Hora"
-                            dateFormat="dd/MM/yyyy HH:mm"
-                            placeholderText="Selecione data e hora"
-                            className="input-field w-full"
-                            isClearable
-                            showYearDropdown // Permite mudar o ano facilmente
-                            scrollableYearDropdown
-                            yearDropdownItemNumber={15}
-                            autoComplete="off"
-                        />
-                        <Calendar className="absolute right-3 top-2.5 text-deb-nude pointer-events-none " size={18} />
+                
+                            
+                            <DatePicker
+                                label="Due Date"
+                                selected={dueDate} // No TaskItem use 'tempDate'
+                                onChange={(date) => setDueDate(date)}
+                                dateFormat="MM/DD/YYYY" // No TaskItem use 'setTempDate'
+                            />
+                            <Calendar className="absolute right-3 top-2.5 text-deb-nude pointer-events-none " size={18} />
+                        
                     </div>
                     
                     <div className="flex gap-3 mt-4">
