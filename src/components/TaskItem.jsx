@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { Modal } from "./Modal";
 import { Edit, Trash2, Calendar as CalendarIcon  } from 'lucide-react';
-import DatePicker from "react-datepicker";
-
+import { DueDate } from "./DueDate";
 export function TaskItem({task, onDelete, onToggle, onEdit}) {
 
     const [isEditing, setIsEditing] = useState(false);
@@ -131,24 +130,8 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                             onKeyDown={(e) => e.key === 'Enter' && handleSave()}
                         />
 
-                        <div>
-                            <DatePicker
-                                selected={tempDate} // No TaskItem use 'tempDate'
-                                onChange={(date) => setTempDate(date)} // No TaskItem use 'setTempDate'
-                                showTimeSelect
-                                timeFormat="HH:mm"
-                                timeIntervals={15}
-                                timeCaption="Hora"
-                                dateFormat="MM/dd/yyyy HH:mm"
-                                placeholderText="Selecione data e hora"
-                                className="input-field w-full"
-                                isClearable
-                                showYearDropdown // Permite mudar o ano facilmente
-                                scrollableYearDropdown
-                                yearDropdownItemNumber={15}
-                                autoComplete="off"
-                            />
-                        </div>
+                        <DueDate selectedDate={tempDate} onDateChange={(date) => setTempDate(date)} />
+
                         <div className="flex gap-3 mt-4">
                             <button 
                                 className="flex-1 px-4 py-2 text-deb-nude font-medium hover:bg-deb-soft/10 rounded-button transition-colors"

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Modal } from "./Modal";
 import { Plus } from 'lucide-react';
-import DatePicker from "react-datepicker";
-import { Calendar } from 'lucide-react';
-import "react-datepicker/dist/react-datepicker.css";
+import { DueDate } from "./DueDate";
+
 
 
 export function TaskInput({onAdd}) {
@@ -56,30 +55,7 @@ export function TaskInput({onAdd}) {
                     <label>
                         Due Date (optional)
                     </label>
-                    <div className="relative">
-                
-                            
-                            <div>
-                                <DatePicker
-                                            selected={tempDate} // No TaskItem 'tempDate'
-                                            onChange={(date) => setTempDate(date)} //TaskItem use 'setTempDate'
-                                            showTimeSelect
-                                            timeFormat="HH:mm"
-                                            timeIntervals={15}
-                                            timeCaption="Hora"
-                                            dateFormat="MM/dd/yyyy HH:mm"
-                                            placeholderText="Selecione data e hora"
-                                            className="input-field w-full"
-                                            isClearable
-                                            showYearDropdown // Permite mudar o facilmente
-                                            scrollableYearDropdown
-                                            yearDropdownItemNumber={15}
-                                            autoComplete="off"
-                                        />
-                                    </div>
-                            <Calendar className="absolute right-3 top-2.5 text-deb-nude pointer-events-none " size={18} />
-                        
-                    </div>
+                    <DueDate selectedDate={tempDate} onDateChange={(date) => setTempDate(date)} />
                     
                     <div className="flex gap-3 mt-4">
                         <button 
