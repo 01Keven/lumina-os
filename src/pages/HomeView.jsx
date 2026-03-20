@@ -20,11 +20,24 @@ export function HomeView({ stats }) {
         // Removi a div duplicada e mantive apenas uma estrutura limpa
         <div className="p-8 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft min-h-screen">
             
-            {/* Cabeçalho */}
-            <div className="bg-deb-deep p-8 mb-8 rounded-app shadow-sm">
+            {/* Cabeçalho com Posicionamento Relativo */}
+        <div className="bg-deb-deep p-8 mb-14 rounded-app shadow-sm relative overflow-visible flex justify-between min-h-50">
+            
+            {/* Lado Esquerdo: Conteúdo de Texto */}
+            <div className="z-10">
                 <h1 className="text-4xl font-black text-white mb-2">Welcome Back!</h1>
-                <p className="text-white/80 mb-4">Here is your productivity overview.</p>
+                <p className="text-white/80">Here is your productivity overview.</p>
             </div>
+            
+            {/* Imagem Flutuante: Absolute faz ela não ocupar espaço físico na div */}
+            <div className="absolute right-24 bottom-14 top-0 flex items-center pr-4 pointer-events-none">
+                <img 
+                    src="/src/assets/images/multitasking.png" 
+                    alt="Productivity Overview" 
+                    className="w-60 md:w-60 object-contain translate-y-4 md:translate-y-8" 
+                />
+            </div>
+        </div>
             
             {/* Cards de Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
