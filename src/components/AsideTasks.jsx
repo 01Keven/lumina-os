@@ -5,7 +5,7 @@ export function AsideTasks({ tasks }) {
     const upcoming = tasks
         .filter(t => !t.done && t.dueDate)
         .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)) // Ordena por data mais próxima
-        
+        .slice(0, 4); // Limita a 5 tarefas
 
     return (
         <aside className="card p-6 bg-deb-soft border border-deb-deep/40 h-max-content">

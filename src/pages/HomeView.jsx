@@ -1,6 +1,7 @@
 // HomeView.jsx
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { AsideTasks } from "../components/AsideTasks";
+import { UserConfigs } from "../components/UserConfigs";
 
 export function HomeView({ stats, tasks }) {
     const generalData = [
@@ -17,11 +18,13 @@ export function HomeView({ stats, tasks }) {
         }
     ];
 
+    const userName = "Keven"; // Exemplo de nome de usuário, pode ser dinâmico no futuro
+
     return (
         <div className="p-8 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft min-h-screen">
             
             {/* Container Flex Principal */}
-            <div className="flex flex-col lg:flex-row gap-8">
+            <div className="flex flex-col lg:flex-row gap-8 mb-8">
                 
                 {/* Lado Esquerdo: Conteúdo Principal (Ocupa o máximo de espaço) */}
                 <div className="flex-1 min-w-0">
@@ -103,6 +106,9 @@ export function HomeView({ stats, tasks }) {
                 {/* Lado Direito: AsideTasks */}
                 <div className="w-full lg:w-72 xl:w-60">
                     <AsideTasks tasks={tasks} />
+                <div className="mt-3">
+                    <UserConfigs userName={userName} />
+                </div>
                 </div>
 
             </div>
