@@ -40,7 +40,7 @@ function App() {
     const renderPage = () => {
         switch (currentPage) {
             case 'home':
-                return <HomeView stats={stats} />;
+                return <HomeView stats={stats} tasks={tasks} />;
             case 'tasks':
                 return (
                     <TasksView 
