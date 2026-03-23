@@ -26,7 +26,7 @@ export function TaskInput({onAdd}) {
         <>
             <button 
                 onClick={() => setIsModalOpen(true)}
-                className="btn-primary bg-deb-deep items-center"
+                className="btn-primary bg-deb-deep items-center cursor-pointer"
             >
                 <Plus size={20} />
                 Add

@@ -1,7 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 
 
-export function ButtonDropDown({buttonText, children, icon: Icon, className = ""}) {
+export function ButtonDropDown({
+    buttonText, 
+    children, 
+    icon: Icon, 
+    className = "",
+    dropdownClassName = ""
+}) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -16,8 +22,8 @@ export function ButtonDropDown({buttonText, children, icon: Icon, className = ""
     }, []);
 
     return (
-        <div className="relative inline-block text-left" ref={dropdownRef}>
-            <button className={`flex items-center gap-2 transition-all ${className}`}
+        <div className="relative inline-block text-left " ref={dropdownRef}>
+            <button className={`flex items-center gap-2 transition-all cursor-pointer ${className} ${isOpen ? 'brightness-90' : ''}`}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 {Icon && <Icon className="" size={20} />}
@@ -25,9 +31,9 @@ export function ButtonDropDown({buttonText, children, icon: Icon, className = ""
             </button>
 
             {isOpen && (
-                <div className="absolute mt-2 w-48 bg-white border border-deb-soft rounded-button shadow-lux z-20 overflow-hidden animate-in zoom-in duration-200"
-                
-                onClick={() => setIsOpen(false)}>
+                <div className={`absolute mt-2 w-48 bg-white border border-deb-soft rounded-button shadow-lux z-20 overflow-hidden animate-in zoom-in duration-200 ${dropdownClassName}`}
+                    onClick={() => setIsOpen(false)}
+                >
 
                     <div className="flex flex-col py-1">
                         {children}

@@ -37,6 +37,8 @@ function App() {
         return true;
     });
 
+    
+
     const renderPage = () => {
         switch (currentPage) {
             case 'home':

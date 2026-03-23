@@ -18,7 +18,7 @@ export function Sidebar({ activePage, onPageChange }) {
                     <button
                         key={item.id}
                         onClick={() => onPageChange(item.id)}
-                        className={`rounded-xl w-full flex items-center gap-4 px-5 py-2 transition-all duration-300 ${
+                        className={`rounded-xl w-full flex items-center gap-4 px-5 py-2 transition-all duration-300 cursor-pointer ${
                             activePage === item.id
                             ? 'bg-deb-deep text-white scale-106'
                             : 'hover:bg-deb-purple/20 text-deb-purple'
