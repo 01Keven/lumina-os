@@ -57,15 +57,15 @@ export function TaskInput({onAdd}) {
                     </label>
                     <DueDate selectedDate={tempDate} onDateChange={(date) => setTempDate(date)} />
                     
-                    <div className="flex gap-3 mt-4">
+                    <div className="flex gap-3 mt-4 justify-between">
                         <button 
-                            className="flex-1 px-4 py-2 text-deb-nude font-medium hover:bg-deb-soft/10 rounded-button transition-colors"
+                            className="flex-1 px-4 py-2 text-deb-nude font-medium rounded-button transition-colors cursor-pointer bg-deb-purple/20 hover:bg-deb-purple/30"
                             onClick={() => setIsModalOpen(false)}
                         >
                             Cancel
                         </button>
                         <button 
-                            className="btn-primary flex-1"
+                            className="btn-primary flex-1 cursor-pointer"
                             onClick={handleAction}
                             
 

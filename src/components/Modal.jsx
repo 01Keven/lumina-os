@@ -1,3 +1,5 @@
+import { X } from "lucide-react"
+
 export function Modal({isOpen, title, onClose, children}) {
     if (!isOpen) return null;
 
@@ -15,9 +17,9 @@ export function Modal({isOpen, title, onClose, children}) {
                     <h2 className="text-2xl font-bold text-deb-deep">{title}</h2>
                     <button 
                         onClick={onClose}
-                        className="text-deb-nude hover:text-deb-deep text-2xl transition-colors"
+                        className="text-deb-nude hover:text-deb-deep text-2xl transition-colors cursor-pointer"
                     >
-                        &times;
+                        <X />
                     </button>
                 </div>
 

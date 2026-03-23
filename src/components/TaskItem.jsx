@@ -75,14 +75,14 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                     {/* Botão que abre o Modal de Edição */}
                     <button 
                         onClick={() => setIsModalOpen(true)} 
-                        className="text-deb-purple hover:text-deb-deep transition-colors"
+                        className="text-deb-purple hover:text-deb-deep transition-colors cursor-pointer"
                     >
                         <Edit size={20}/>
                     </button>
 
                     <button 
                         onClick={() => setIsCloseModalOpen(true)} 
-                        className="text-red-400 hover:text-red-600 transition-colors"
+                        className="text-red-400 hover:text-red-600 transition-colors cursor-pointer"
                     >
                         <Trash2 size={20}/>
                     </button>
@@ -94,9 +94,9 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                     title="Delete Task"
                 >
 
-                    <div className="flex justify-between items-center w-full mt-6">
+                    <div className="flex justify-between items-center w-full mt-6 ">
                         <button
-                            className="px-4 py-2 text-deb-nude font-medium hover:bg-deb-soft/10 rounded-button transition-colors"
+                            className="px-4 py-2 text-deb-nude font-medium hover:bg-deb-soft/10 rounded-button transition-colors cursor-pointer "
                             onClick={handleCancel}
                         >
                             Cancel
@@ -118,7 +118,7 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
                     title="Edit Task"
                 >
                     <div className="flex flex-col gap-4">
-                        <label className="text-sm font-bold text-deb-purple uppercase tracking-widest text-left">
+                        <label className="text-sm font-bold text-deb-purple uppercase tracking-widest text-left ">
                             Update your task
                         </label>
                         
@@ -134,13 +134,13 @@ export function TaskItem({task, onDelete, onToggle, onEdit}) {
 
                         <div className="flex gap-3 mt-4">
                             <button 
-                                className="flex-1 px-4 py-2 text-deb-nude font-medium hover:bg-deb-soft/10 rounded-button transition-colors"
+                                className="flex-1 px-4 py-2 text-deb-nude font-medium rounded-button transition-colors cursor-pointer bg-deb-purple/20 hover:bg-deb-purple/30"
                                 onClick={handleCancel}
                             >
                                 Cancel
                             </button>
                             <button 
-                                className="btn-primary flex-1"
+                                className="btn-primary flex-1 cursor-pointer"
                                 onClick={handleSave}
                             >
                                 Save Changes
