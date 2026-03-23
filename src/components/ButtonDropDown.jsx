@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { ListFilter } from 'lucide-react';
 
-export function ButtonDropDown({buttonText, children}) {
+
+export function ButtonDropDown({buttonText, children, icon: Icon, className = ""}) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -17,10 +17,10 @@ export function ButtonDropDown({buttonText, children}) {
 
     return (
         <div className="relative inline-block text-left" ref={dropdownRef}>
-            <button className="btn-primary flex items-center gap-2"
+            <button className={`flex items-center gap-2 transition-all ${className}`}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <ListFilter className="" size={20} />
+                {Icon && <Icon className="" size={20} />}
                 {buttonText}
             </button>
 

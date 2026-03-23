@@ -1,7 +1,7 @@
 import { TaskInput } from '../components/TaskInput';
 import { ButtonDropDown } from '../components/ButtonDropDown';
 import { TaskItem } from '../components/TaskItem';
-import { TaskStats } from '../components/TaskStats';
+import { ListFilter } from 'lucide-react';
 
 export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
     return (
@@ -13,7 +13,7 @@ export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
                     <div className="flex items-center gap-3">
                         <TaskInput onAdd={handlers.onAdd} /> 
                         
-                        <ButtonDropDown buttonText={`Filter`}>
+                        <ButtonDropDown buttonText={`Filter`} icon={ListFilter} className='btn-primary'>
                             <div className="flex flex-col">
                                 {['all', 'todo', 'done'].map((f) => (
                                     <button

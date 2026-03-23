@@ -1,5 +1,5 @@
 // HomeView.jsx
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { AsideTasks } from "../components/AsideTasks";
 import { UserConfigs } from "../components/UserConfigs";
 
