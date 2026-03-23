@@ -1,5 +1,6 @@
 import { ButtonDropDown } from "../components/ButtonDropDown";
 import { Settings2, LogOut,  UserCircle} from 'lucide-react';
+import { UserImage } from "./UserImage";
 
 export function UserConfigs({ userName }) {
     return (
@@ -47,9 +48,7 @@ export function UserConfigs({ userName }) {
 
                 </div>
                 <div className="flex items-center gap-2 mt-4">
-                    <div className="w-12 h-12 bg-deb-deep rounded-full flex items-center justify-center text-white font-bold text-xl">
-                        {userName.charAt(0)}
-                    </div>
+                    <UserImage name={userName} className="w-12 h-12"/>
                         <p className="text-deb-dark font-medium">{userName}</p>
 
                 

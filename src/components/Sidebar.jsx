@@ -7,7 +7,7 @@ export function Sidebar({ activePage, onPageChange }) {
     ];
 
     return (
-        <aside className="w-60 bg-deb-soft h-screen sticky flex flex-col text-white shadow-2xl">
+        <aside className="w-60 bg-deb-soft h-screen sticky flex flex-col text-white shadow-2xl shrink-0">
             <div className="p-8 border-b border-b-deb-dark/5">
                 <h2 className="text-2xl font-semibold text-deb-deep text-center">TASK PRO
                 </h2>
@@ -30,12 +30,6 @@ export function Sidebar({ activePage, onPageChange }) {
                     </button>))}
                 
             </nav>
-            <div className="p-8 text-center">
-                <footer className="text-deb-deep font-medium text-sm">
-                    All Rights Reserved &copy; 2026 - Keven Christian
-                </footer>
-                
-            </div>
         </aside>
     )
 }

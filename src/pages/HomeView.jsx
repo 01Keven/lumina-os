@@ -21,7 +21,7 @@ export function HomeView({ stats, tasks }) {
     const userName = "Keven"; // Exemplo de nome de usuário, pode ser dinâmico no futuro
 
     return (
-        <div className="p-8 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft min-h-screen">
+        <div className="p-8 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft overflow-hidden">
             
             {/* Container Flex Principal */}
             <div className="flex flex-col lg:flex-row gap-8 mb-8">
@@ -66,7 +66,7 @@ export function HomeView({ stats, tasks }) {
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                         
                         {/* Gráfico 1: Distribuição */}
-                        <div className="card p-5 flex flex-col items-center min-h-40">
+                        <div className="card p-5 flex flex-col items-center min-h-20 max-h-60">
                             <h4 className="text-[10px] font-bold text-deb-nude uppercase mb-4 self-start">Distribution</h4>
                             <ResponsiveContainer width="100%" height={150}>
                                 <BarChart data={generalData}>
@@ -78,7 +78,7 @@ export function HomeView({ stats, tasks }) {
                         </div>
 
                         {/* Gráfico 2: Comparativo */}
-                        <div className="card p-5 flex flex-col items-center min-h-80">
+                        <div className="card p-5 flex flex-col items-center min-h-20 max-h-60">
                             <h4 className="text-[10px] font-bold text-deb-nude uppercase mb-4 self-start">Done vs Pending</h4>
                             <ResponsiveContainer width="100%" height={150}>
                                 <BarChart data={[{name: 'Tasks', done: stats.done, pending: stats.pending}]}>
@@ -90,7 +90,7 @@ export function HomeView({ stats, tasks }) {
                         </div>
 
                         {/* Gráfico 3: Eficiência */}
-                        <div className="card p-5 flex flex-col items-center min-h-0">
+                        <div className="card p-5 flex flex-col items-center min-h-20 max-h-60">
                             <h4 className="text-[10px] font-bold text-deb-nude uppercase mb-4 self-start">Efficiency %</h4>
                             <ResponsiveContainer width="100%" height={150}>
                                 <BarChart data={efficiencyData}>

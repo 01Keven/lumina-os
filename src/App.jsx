@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Sidebar } from "./components/Sidebar";
 import { HomeView } from "./pages/HomeView";
 import { TasksView } from "./pages/TasksView";
+import { Navbar } from "./components/Navbar";
 
 function App() {
     const [currentPage, setCurrentPage] = useState('home');
@@ -23,6 +24,8 @@ function App() {
         onToggle: (id) => setTasks(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t)),
         onEdit: (id, text, dueDate) => setTasks(tasks.map(t => t.id === id ? { ...t, text, dueDate: dueDate} : t))
     };
+
+    const userName = "Keven"; // Exemplo de nome de usuário, pode ser dinâmico no futuro
 
     // Cálculos de Stats
     const stats = {
@@ -61,17 +64,23 @@ function App() {
     };
 
     return (
-        <div className="flex min-h-screen ">
-    
-            <Sidebar activePage={currentPage} onPageChange={setCurrentPage} />
+    <div className="flex h-screen overflow-hidden"> {/* h-screen e overflow-hidden matam o scroll global */}
+        <Sidebar activePage={currentPage} onPageChange={setCurrentPage} />
+        
+        {/* Usamos flex-col para o Nav ficar no topo e o conteúdo embaixo */}
+        <div className="flex-1 flex flex-col min-w-0"> 
+            <Navbar userName={userName}/>
             
-            <main className="flex-1">
-                <div className="mx-auto">
+            {/* O main agora gerencia seu próprio scroll vertical se o conteúdo for grande, 
+                mas nunca scroll lateral */}
+            <main className="flex-1 overflow-y-auto bg-deb-soft/10">
+                <div className="p-0"> {/* Removido mx-auto para evitar centralizações que causam bugs */}
                     {renderPage()}
                 </div>
             </main>
         </div>
-    );
+    </div>
+);
 }
 
 export default App;
