@@ -17,7 +17,8 @@ export function Navbar({ userName }) {
                     <input 
                         type="text" 
                         placeholder="Search tasks..." 
-                        className="w-full bg-deb-nude/5 text-deb-nude placeholder:text-deb-nude/60 border border-deb-nude/30 rounded-2xl py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:bg-white transition-all shadow-sm" 
+                        className="w-full bg-deb-nude/5 text-deb-nude placeholder:text-deb-nude/60 border border-deb-nude/30 rounded-2xl py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:bg-white transition-all shadow-sm"
+                        maxLength={20}
                     />
                 </div>
             </div>

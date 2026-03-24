@@ -50,6 +50,7 @@ export function TaskInput({onAdd}) {
                         placeholder="Ex: Buy some milk..."
                         onChange={e => setText(e.target.value)} 
                         onKeyDown={(e) => e.key === 'Enter' && handleAction()}
+                        maxLength={40}
                     />
 
                     <label>
