@@ -9,7 +9,7 @@ export function AsideTasks({ tasks }) {
 
     return (
         <aside className="card p-6 bg-deb-soft border border-deb-deep/40 h-max-content">
-            <h2 className="text-sm font-bold text-deb-dark/80 uppercase tracking-widest mb-6">
+            <h2 className="text-sm font-bold text-deb-deep uppercase tracking-widest mb-6">
                 Upcoming Priority
             </h2>
             

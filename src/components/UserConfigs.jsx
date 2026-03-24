@@ -7,7 +7,7 @@ export function UserConfigs({ userName }) {
         <aside className="card p-6 bg-white border border-deb-deep/40 items-center justify-between">
             <div className="items-center gap-4">
                 <div className="flex items-center justify-between">
-                    <h2 className=" text-sm font-bold text-deb-purple uppercase tracking-widest">
+                    <h2 className=" text-sm font-bold text-deb-deep uppercase tracking-widest">
                         User Settings
                     </h2>
                     <ButtonDropDown 
@@ -49,7 +49,7 @@ export function UserConfigs({ userName }) {
                 </div>
                 <div className="flex items-center gap-2 mt-4">
                     <UserImage name={userName} className="w-12 h-12"/>
-                        <p className="text-deb-dark font-medium">{userName}</p>
+                        <p className="text-deb-nude font-medium">{userName}</p>
 
                 
                 </div>
