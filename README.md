@@ -1,73 +1,94 @@
-# React + TypeScript + Vite
+# 🚀 Lúmina OS - Smart Productivity Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[**Português**](https://www.google.com/search?q=%23portugu%C3%AAs) | [**English**](https://www.google.com/search?q=%23english)
 
-Currently, two official plugins are available:
+-----
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+\<a name="português"\>\</a\>
 
-## React Compiler
+## 🇧🇷 Português
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Lúmina OS** é um ecossistema de produtividade fullstack projetado para transformar listas de tarefas simples em insights visuais acionáveis. Com uma interface minimalista e foco em UX, o projeto utiliza gráficos de performance para iluminar o progresso do usuário.
 
-## Expanding the ESLint configuration
+### 🎨 Sobre o Projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Este projeto nasceu da necessidade de visualizar não apenas o que precisa ser feito, mas quão eficiente está sendo a rotina do usuário. O dashboard principal oferece uma visão 360º de distribuição, conclusão e metas de produtividade.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Principais Funcionalidades
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  * **Dashboard Inteligente**: Visualização de dados em tempo real com `Recharts`.
+  * **Gestão de Tarefas**: CRUD completo com persistência em `localStorage` (migrando para PostgreSQL/Next.js).
+  * **Notificações e Prioridades**: Componente `AsideTasks` que destaca prazos iminentes e tarefas prioritárias.
+  * **Filtros Dinâmicos**: Categorização rápida entre Pendentes, Concluídas e Total.
+  * **Interface Premium**: Design responsivo com Tailwind CSS e componentes modulares como `Modal` e `ButtonDropDown`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-----
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+\<a name="english"\>\</a\>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🇺🇸 English
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Lúmina OS** is a fullstack productivity ecosystem designed to transform simple to-do lists into actionable visual insights. Featuring a minimalist interface and a strong focus on UX, the project leverages performance charts to illuminate user progress.
+
+### 🎨 About the Project
+
+This project was born from the need to visualize not just what needs to be done, but how efficient a user's routine actually is. The main dashboard provides a 360º view of distribution, completion, and productivity goals.
+
+### Key Features
+
+  * **Smart Dashboard**: Real-time data visualization using `Recharts`.
+  * **Task Management**: Full CRUD with `localStorage` persistence (migrating to PostgreSQL/Next.js).
+  * **Notifications & Priorities**: `AsideTasks` system that highlights upcoming deadlines and priority tasks.
+  * **Dynamic Filters**: Quick categorization between Todo, Done, and All tasks.
+  * **Premium Interface**: Responsive design with Tailwind CSS and modular components like `Modal` and `ButtonDropDown`.
+
+-----
+
+## 🛠️ Tecnologias | Technologies
+
+| Tech | Descrição / Description |
+| :--- | :--- |
+| **React.js** | UI Modular & State Management |
+| **Next.js** | Server-side Rendering & API Routes (In progress) |
+| **Tailwind CSS** | Utility-first styling & Responsive Design |
+| **Lucide React** | Modern minimalist iconography |
+| **Recharts** | Interactive data visualization charts |
+| **Prisma & Postgres** | ORM & Relational Database (Migration phase) |
+
+-----
+
+## 🏗️ Arquitetura / Architecture
+
+| Component | Function (PT) | Function (EN) |
+| :--- | :--- | :--- |
+| `Sidebar` | Navegação principal persistente. | Main persistent navigation. |
+| `Navbar` | Busca e perfil do usuário. | Search and user profile. |
+| `HomeView` | Estatísticas e análise gráfica. | Statistics and graphical analysis. |
+| `TasksView` | Tabela de tarefas e filtros. | Task table and filters. |
+| `AsideTasks` | Lista de prioridades próximas. | Upcoming priorities list. |
+
+-----
+
+## 🚀 Como Executar | How to Run
+
+1.  **Clone / Clone**:
+    ```bash
+    git clone https://github.com/seu-usuario/lumina-os.git
+    ```
+2.  **Instale / Install**:
+    ```bash
+    npm install
+    ```
+3.  **Rode / Run**:
+    ```bash
+    npm run dev
+    ```
+
+-----
+
+## 👤 Autor | Author
+
+**Keven** - *Software Engineer / Fullstack Developer*
+
+  * [LinkedIn](https://www.linkedin.com/in/keven-christian/)
+  * [GitHub](https://github.com/01Keven)
