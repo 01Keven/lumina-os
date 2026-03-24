@@ -9,7 +9,7 @@ export function Sidebar({ activePage, onPageChange }) {
     return (
         <aside className="w-60 bg-deb-soft h-screen sticky flex flex-col text-white shadow-2xl shrink-0">
             <div className="p-4 border-b border-b-deb-dark/5 items-center flex flex-col justify-center">
-                <img src="src/assets/images/lu.png" alt=""  className='w-12 p-1'/>
+                <img src="src/assets/images/lu.png" alt=""  className='w-12 p-1' draggable={false}/>
             </div>
 
             <nav className="flex-1 flex flex-col gap-2 mt-6 px-4">
