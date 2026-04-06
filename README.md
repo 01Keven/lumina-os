@@ -1,10 +1,8 @@
 # 🚀 Lúmina OS - Smart Productivity Dashboard
 
-[**Português**](https://www.google.com/search?q=%23portugu%C3%AAs) | [**English**](https://www.google.com/search?q=%23english)
+[**Português**]| [**English**]
 
 -----
-
-\<a name="português"\>\</a\>
 
 ## 🇧🇷 Português
 
@@ -23,8 +21,6 @@ Este projeto nasceu da necessidade de visualizar não apenas o que precisa ser f
   * **Interface Premium**: Design responsivo com Tailwind CSS e componentes modulares como `Modal` e `ButtonDropDown`.
 
 -----
-
-\<a name="english"\>\</a\>
 
 ## 🇺🇸 English
 
