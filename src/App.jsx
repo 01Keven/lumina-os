@@ -4,10 +4,12 @@ import { HomeView } from "./pages/HomeView";
 import { TasksView } from "./pages/TasksView";
 import { Navbar } from "./components/Navbar";
 
+
 function App() {
     const [currentPage, setCurrentPage] = useState('home');
     const [filter, setFilter] = useState('all');
-    
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     const [tasks, setTasks] = useState(() => {
         const saveData = localStorage.getItem("TASKS_V1");
         return saveData ? JSON.parse(saveData) : [];
@@ -65,11 +67,19 @@ function App() {
 
     return (
     <div className="flex h-screen overflow-hidden"> {/* h-screen e overflow-hidden matam o scroll global */}
-        <Sidebar activePage={currentPage} onPageChange={setCurrentPage} />
+        <Sidebar 
+        activePage={currentPage} 
+        onPageChange={(page) => {
+            setCurrentPage(page)
+            setIsSidebarOpen(false); // Fecha o sidebar ao clicar em um item
+        }}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        />
         
         {/* Usamos flex-col para o Nav ficar no topo e o conteúdo embaixo */}
         <div className="flex-1 flex flex-col min-w-0"> 
-            <Navbar userName={userName}/>
+            <Navbar userName={userName} onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
             
             {/* O main agora gerencia seu próprio scroll vertical se o conteúdo for grande, 
                 mas nunca scroll lateral */}
