@@ -27,7 +27,7 @@ function App() {
         onEdit: (id, text, dueDate) => setTasks(tasks.map(t => t.id === id ? { ...t, text, dueDate: dueDate} : t))
     };
 
-    const userName = "Keven"; // Exemplo de nome de usuário, pode ser dinâmico no futuro
+    const userName = "Keven";
 
     // Cálculos de Stats
     const stats = {

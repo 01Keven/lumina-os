@@ -1,11 +1,11 @@
 import { Calendar, Clock } from "lucide-react";
 
 export function AsideTasks({ tasks }) {
-    // Filtramos para mostrar apenas tarefas pendentes que TÊM data
+    // filtramos para mostrar apenas tarefas pendentes que tem data
     const upcoming = tasks
         .filter(t => !t.done && t.dueDate)
-        .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)) // Ordena por data mais próxima
-        .slice(0, 4); // Limita a 5 tarefas
+        .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)) // ordena por data mais próxima
+        .slice(0, 4); // limita a 5 tarefas
 
     return (
         <aside className="card p-6 bg-deb-soft border border-deb-deep/40 h-max-content">
@@ -18,7 +18,7 @@ export function AsideTasks({ tasks }) {
                     {upcoming.map((task) => (
                         <li key={task.id} className="group flex flex-col gap-1 border-l-4 border-deb-deep pl-4 py-1 hover:bg-deb-soft/5 transition-colors bg-deb-nude/10">
                             <span className="font-bold text-deb-purple group-hover:text-deb-deep transition-colors">
-                                {task.text} {/* Corrigido de .title para .text */}
+                                {task.text} 
                             </span>
                             
                             <div className="flex items-center gap-2 text-2xs font-medium text-deb-nude">

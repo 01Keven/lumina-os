@@ -13,9 +13,7 @@ export function UserConfigs({ userName }) {
                     <ButtonDropDown 
                         icon={Settings2} 
                         className="text-deb-nude  p-1  hover:bg-deb-soft/40 rounded-full transition-colors"
-                        /* shadow-xl: Sombra mais forte
-                           border: Borda suave no container
-                        */
+                       
                         dropdownClassName="  w-max p-1.5 right-0 left-auto shadow-xl z-30 border border-deb-soft/50 bg-white"
                     > 
                         <div className="flex flex-col gap-1">
@@ -26,9 +24,7 @@ export function UserConfigs({ userName }) {
                                     <button
                                         key={item}
                                         onClick={() => console.log(item)}
-                                        /* border: Borda suave nos botões
-                                           hover: Condicional para Azul (Edit) ou Vermelho (Logout)
-                                        */
+                                       
                                         className={`
                                             flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-md border border-transparent transition-all duration-200 cursor-pointer
                                             ${isLogout 

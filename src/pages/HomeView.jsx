@@ -21,42 +21,41 @@ export function HomeView({ stats, tasks }) {
     const userName = "Keven"; // Exemplo de nome de usuário, pode ser dinâmico no futuro
 
     return (
-        <div className="p-8 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft overflow-hidden">
+        /* Mudança: p-4 no mobile para não encostar na borda, p-8 no desktop */
+        <div className="p-4 md:p-8 animate-in fade-in slide-in-from-left-4 duration-500 bg-deb-soft overflow-hidden">
             
-            {/* Container Flex Principal */}
             <div className="flex flex-col lg:flex-row gap-8 mb-8">
                 
-                {/* Lado Esquerdo: Conteúdo Principal (Ocupa o máximo de espaço) */}
                 <div className="flex-1 min-w-0">
                     
-                    {/* Cabeçalho */}
-                    <div className="bg-deb-deep p-8 mb-10 rounded-app shadow-sm relative overflow-visible flex justify-between min-h-40">
+                    {/* Cabeçalho: Ajustado p-6 no mobile para ganhar espaço */}
+                    <div className="bg-deb-deep p-6 md:p-8 mb-6 md:mb-10 rounded-app shadow-sm relative overflow-visible flex justify-between min-h-32 md:min-h-40">
                         <div className="z-10">
-                            <h1 className="text-4xl font-black text-white mb-2">Welcome Back!</h1>
-                            <p className="text-white/80">Here is your productivity overview.</p>
+                            <h1 className="text-2xl md:text-4xl font-black text-white mb-1 md:mb-2">Welcome Back!</h1>
+                            <p className="text-white/80 text-sm md:text-base">Here is your productivity overview.</p>
                         </div>
-                        <div className="absolute right-24 bottom-4 top-0 flex items-center pointer-events-none">
+                        <div className="absolute right-12 md:right-24 bottom-4 top-0 items-center pointer-events-none hidden md:flex">
                             <img 
                                 src="/src/assets/images/multitasking.png" 
-                                alt="Productivity Overview" 
+                                alt="Productivity" 
                                 className="w-50 md:w-50 object-contain translate-y-2" 
                             />
                         </div>
                     </div>
                     
-                    {/* Cards de Stats Rápidos */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div className="card p-6 border border-deb-purple bg-white shadow-sm">
-                            <p className="text-xs font-bold text-deb-nude uppercase tracking-widest">Total</p>
-                            <p className="text-4xl font-black text-deb-deep">{stats.total}</p>
+                    {/* Cards de Stats Rápidos: Agora em linha única no mobile com gap menor */}
+                    <div className="flex flex-row md:grid md:grid-cols-3 gap-3 md:gap-6 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+                        <div className="card flex-1 min-w-2 p-4 md:p-6 border border-deb-purple bg-white shadow-sm text-center md:text-left">
+                            <p className="text-[10px] md:text-xs font-bold text-deb-nude uppercase tracking-widest">Total</p>
+                            <p className="text-xl md:text-4xl font-black text-deb-deep">{stats.total}</p>
                         </div>
-                        <div className="card p-6 border border-green-500 bg-white shadow-sm">
-                            <p className="text-xs font-bold text-deb-nude uppercase tracking-widest">Done</p>
-                            <p className="text-4xl font-black text-deb-deep">{stats.done}</p>
+                        <div className="card flex-1 min-w-25 p-4 md:p-6 border border-green-500 bg-white shadow-sm text-center md:text-left">
+                            <p className="text-[10px] md:text-xs font-bold text-deb-nude uppercase tracking-widest">Done</p>
+                            <p className="text-xl md:text-4xl font-black text-deb-deep">{stats.done}</p>
                         </div>
-                        <div className="card p-6 border border-deb-nude bg-white shadow-sm">
-                            <p className="text-xs font-bold text-deb-nude uppercase tracking-widest">Goal</p>
-                            <p className="text-4xl font-black text-deb-deep">
+                        <div className="card flex-1 min-w-25 p-4 md:p-6 border border-deb-nude bg-white shadow-sm text-center md:text-left">
+                            <p className="text-[10px] md:text-xs font-bold text-deb-nude uppercase tracking-widest">Goal</p>
+                            <p className="text-xl md:text-4xl font-black text-deb-deep">
                                 {stats.total > 0 ? Math.round((stats.done / stats.total) * 100) : 0}%
                             </p>
                         </div>

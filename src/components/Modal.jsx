@@ -23,7 +23,6 @@ export function Modal({isOpen, title, onClose, children}) {
                     </button>
                 </div>
 
-                {/* Aqui entra qualquer conteúdo que você passar por dentro da tag */}
                 {children}
             </div>
         </div>

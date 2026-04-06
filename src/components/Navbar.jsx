@@ -1,8 +1,6 @@
 import { UserImage } from "./UserImage";
 import { Bell, Mail, ChevronLeft, Search, Menu  } from "lucide-react";
 
-// Navbar.jsx
-// ... imports permanecem iguais
 
 export function Navbar({ userName, onMenuClick }) {
     return (

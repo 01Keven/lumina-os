@@ -31,37 +31,38 @@ export function TasksView({ tasks, filter, setFilter, handlers, stats }) {
                     </div>
                 </header>
 
-                <div className="overflow-hidden border-deb-soft/30 shadow-sm">
-                    <table className="w-full text-left border-collapse">
-                        <thead className="border-b border-gray-100 bg-white text-shadow-deb-deep text-xs uppercase tracking-widest">
-                            <tr>
-                                <th className="p-4 font-semibold">
-                                    All Tasks
-                                    <span className='pe-2 pl-2 m-2 bg-gray-200 rounded-xl text-deb-nude'>{stats.total}</span>
-                                </th>
-                                <th className="p-4 font-semibold">Status</th>
-                                <th className="p-4 font-semibold">Date</th>
-                                <th className="p-4 font-semibold text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-deb-soft/80">
-                            {tasks.map(task => (
-                                <TaskItem 
-                                    key={task.id} 
-                                    task={task} 
-                                    onDelete={handlers.onDelete} 
-                                    onToggle={handlers.onToggle} 
-                                    onEdit={handlers.onEdit} 
-                                />
-                            ))}
-                        </tbody>
-                    </table>
+
+                <div className="card p-0! overflow-hidden border-deb-soft/30 shadow-sm">
+                    <div className="overflow-x-auto scrollbar-hide">
+                        <table className="w-full text-left border-collapse min-w-80">
+                            <thead className="border-b border-gray-100 bg-white text-xs uppercase tracking-widest text-deb-nude">
+                                <tr>
+                                    <th className="p-4 font-semibold">
+                                        All Tasks
+                                        <span className='px-2 py-0.5 ml-2 bg-deb-soft text-deb-deep rounded-full text-[10px]'>
+                                            {stats.total}
+                                        </span>
+                                    </th>
+                                    <th className="p-4 font-semibold">Status</th>
+                                    <th className="p-4 font-semibold">Date</th>
+                                    <th className="p-4 font-semibold text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-deb-soft/80 bg-white">
+                                {tasks.map(task => (
+                                    <TaskItem 
+                                        key={task.id} 
+                                        task={task} 
+                                        onDelete={handlers.onDelete} 
+                                        onToggle={handlers.onToggle} 
+                                        onEdit={handlers.onEdit} 
+                                    />
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
-                {/* <TaskStats onDone={stats.done} Total={stats.total} onPending={stats.pending} /> */}
             </div>
-
-
         </div>
     );
 }

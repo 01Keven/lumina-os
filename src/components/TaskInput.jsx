@@ -3,8 +3,6 @@ import { Modal } from "./Modal";
 import { Plus } from 'lucide-react';
 import { DueDate } from "./DueDate";
 
-
-
 export function TaskInput({onAdd}) {
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
