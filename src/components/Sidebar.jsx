@@ -26,7 +26,7 @@ export function Sidebar({ activePage, onPageChange, isOpen, onClose }) {
                 lg:static lg:translate-x-0 lg:flex lg:flex-col lg:h-screen lg:shrink-0 lg:shadow-none lg:border-r lg:border-deb-nude/10
             `}>
                 <div className="p-4 border-b border-b-deb-dark/5 flex items-center justify-center relative">
-                    <img src="src/assets/images/lu.png" alt="Logo" className='w-11 h-10 p-1' draggable={false}/>
+                    <img src="public/images/lu.png" alt="Logo" className='w-11 h-10 p-1' draggable={false}/>
                     
                     {/* Botão de fechar: Só aparece no mobile */}
                     <button onClick={onClose} className="lg:hidden absolute right-4 text-deb-nude p-2 cursor-pointer">

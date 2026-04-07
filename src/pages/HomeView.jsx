@@ -36,7 +36,7 @@ export function HomeView({ stats, tasks }) {
                         </div>
                         <div className="absolute right-12 md:right-24 bottom-4 top-0 items-center pointer-events-none hidden md:flex">
                             <img 
-                                src="/src/assets/images/multitasking.png" 
+                                src="/public/images/multitasking.png" 
                                 alt="Productivity" 
                                 className="w-50 md:w-50 object-contain translate-y-2" 
                             />
